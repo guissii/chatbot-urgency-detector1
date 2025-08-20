@@ -1,0 +1,47 @@
+# Configuration du modèle
+model:
+  model_name: "camembert-base"
+  model_path: "./models/urgency_model"
+  max_length: 256
+  batch_size: 16
+  num_labels: 2
+  dropout: 0.1
+  learning_rate: 2e-5
+  weight_decay: 0.01
+  warmup_steps: 500
+
+# Seuils de priorité
+inference:
+  high_priority_threshold: 0.85
+  medium_priority_threshold: 0.65
+  low_priority_threshold: 0.5
+
+# Configuration du serveur web
+web:
+  host: "0.0.0.0"
+  port: 5000
+  debug: true
+  secret_key: "votre_cle_secrete_tres_longue_et_securisee"
+
+# Chemins des données
+data:
+  train_path: "data/raw/train.csv"
+  eval_path: "data/raw/eval.csv"
+  test_path: "data/raw/test.csv"
+  output_dir: "data/output"
+  input_dir: "data/input"
+
+# Paramètres d'entraînement
+training:
+  num_train_epochs: 5
+  per_device_train_batch_size: 16
+  per_device_eval_batch_size: 16
+  evaluation_strategy: "epoch"
+  save_strategy: "epoch"
+  load_best_model_at_end: true
+  metric_for_best_model: "f1"
+  greater_is_better: true
+  save_total_limit: 2
+  logging_steps: 10
+  logging_dir: "./logs"
+  seed: 42

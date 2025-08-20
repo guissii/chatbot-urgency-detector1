@@ -1,0 +1,6 @@
+models/urgency_classifier_bert/ 
+*.safetensors 
+__pycache__/ 
+*.pyc 
+.venv/ 
+*.log 
